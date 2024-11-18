@@ -173,7 +173,6 @@
 			8250.nr_uarts=2 \
 			log_buf_len=2m \
 			vmalloc=400M swiotlb=noforce \
-			firmware_class.path=/vendor/firmware";
 		kaslr-seed = <0 0>;
 	};
 
