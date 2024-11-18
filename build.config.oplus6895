@@ -69,11 +69,6 @@ vendor/mediatek/kernel_modules/connectivity/wlan/adaptor
 vendor/mediatek/kernel_modules/connectivity/wlan/core/gen4m
 vendor/mediatek/kernel_modules/gpu
 vendor/mediatek/kernel_modules/met_drv_v3
-vendor/oplus/kernel/network/oplus_score
-vendor/oplus/kernel/network/oplus_dns_hook
-vendor/oplus/kernel/network/oplus_qr_scan
-vendor/oplus/kernel/network/oplus_stats_calc
-vendor/oplus/kernel/network/oplus_apps_monitor
 vendor/oplus/kernel/power/power_diag
 vendor/oplus/kernel/cpu/game_opt
 vendor/oplus/kernel/cpu/sched/task_cpustats
@@ -85,10 +80,4 @@ vendor/oplus/kernel/nfc/sn_nci/ese
 vendor/oplus/kernel/secureguard/gki2.0/rootguard
 vendor/oplus/kernel/mm/gloom
 vendor/oplus/kernel/mm/memleak_detect
-vendor/oplus/kernel/explorer
-vendor/oplus/kernel/network/data_module
-vendor/oplus/kernel/network/oplus_game_first
-vendor/oplus/kernel/network/linkpower_module
-vendor/oplus/kernel/network/oplus_network_tuning
-vendor/oplus/kernel/network/oplus_vnet
 "
