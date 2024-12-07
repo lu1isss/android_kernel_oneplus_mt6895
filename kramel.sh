@@ -115,9 +115,9 @@ elif [[ ${COMPILER} == clang ]]; then
 	)
 fi
 
-if [ ! -d "${KDIR}/anykernel3-dragonheart/" ]; then
-	git clone --depth=1 https://github.com/cyberknight777/anykernel3 -b pickle anykernel3-dragonheart
-fi
+#if [ ! -d "${KDIR}/anykernel3-dragonheart/" ]; then
+#	git clone --depth=1 https://github.com/cyberknight777/anykernel3 -b pickle anykernel3-dragonheart
+#fi
 
 if [ ! -f "${KDIR}/version" ]; then
 	echo -e "\n\e[1;31m[✗] version file not found!!! Read https://github.com/cyberknight777/YAKB#version-file for more information.\e[0m"
