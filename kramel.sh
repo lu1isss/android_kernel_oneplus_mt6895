@@ -13,7 +13,7 @@
 # Some Placeholders: [!] [*] [✓] [✗]
 
 # Default defconfig to use for builds.
-export CONFIG=dragonheart_defconfig
+export CONFIG=oplus6895_defconfig
 
 # Default directory where kernel is located in.
 KDIR=$(pwd)
@@ -23,20 +23,20 @@ export KDIR
 export LINKER="ld.lld"
 
 # Device name.
-export DEVICE="Motorola moto g54 5G"
+export DEVICE="OnePlus 10R"
 
 # Date of build.
 DATE=$(date +"%Y-%m-%d")
 export DATE
 
 # Device codename.
-export CODENAME="cancunf"
+export CODENAME="pickle"
 
 # Builder name.
 export BUILDER="cyberknight777"
 
 # Kernel repository URL.
-export REPO_URL="https://github.com/cyberknight777/dragonheart_kernel_motorola_cancunf"
+export REPO_URL="https://github.com/OnePlus-10R/android_kernel_oneplus_mt6895"
 
 # Commit hash of HEAD.
 COMMIT_HASH=$(git rev-parse --short HEAD)
@@ -119,7 +119,7 @@ elif [[ ${COMPILER} == clang ]]; then
 fi
 
 if [ ! -d "${KDIR}/anykernel3-dragonheart/" ]; then
-	git clone --depth=1 https://github.com/cyberknight777/anykernel3 -b cancunf anykernel3-dragonheart
+	git clone --depth=1 https://github.com/cyberknight777/anykernel3 -b pickle anykernel3-dragonheart
 fi
 
 if [ ! -f "${KDIR}/version" ]; then
@@ -133,7 +133,7 @@ export KBUILD_BUILD_USER="cyberknight777"
 export KBUILD_BUILD_HOST="builder"
 VERSION=$(grep ver= version | cut -d= -f2)
 kver="${KBUILD_BUILD_VERSION}"
-zipn=DragonHeart-cancunf-"${VERSION}"
+zipn=DragonHeart-pickle-"${VERSION}"
 
 # A function to exit on SIGINT.
 exit_on_signal_SIGINT() {
@@ -258,8 +258,8 @@ mkzip() {
 	zip -r9 "$zipn".zip . -x ".git*" -x "README.md" -x "LICENSE" -x "*.zip"
 	echo -e "\n\e[1;32m[✓] Built zip! \e[0m"
 	if [[ ${OTA} == "1" ]]; then
-		git clone https://github.com/cyberknight777/cancunf_releases.git
-		cd cancunf_releases || exit 1
+		git clone https://github.com/cyberknight777/pickle_releases.git
+		cd pickle_releases || exit 1
 		echo "https://cyberknight777:$PASSWORD@github.com" >.pwd
 		git config credential.helper "store --file .pwd"
 		sha1=$(sha1sum ../"${zipn}".zip | cut -d ' ' -f1)
@@ -271,8 +271,8 @@ mkzip() {
   \"kernel\": {
   \"name\": \"DragonHeart\",
   \"version\": \"$VERSION\",
-  \"link\": \"https://github.com/cyberknight777/cancunf_releases/releases/download/$VERSION/$zipn.zip\",
-  \"changelog_url\": \"https://raw.githubusercontent.com/cyberknight777/cancunf_releases/master/changelog_r.md\",
+  \"link\": \"https://github.com/cyberknight777/pickle_releases/releases/download/$VERSION/$zipn.zip\",
+  \"changelog_url\": \"https://raw.githubusercontent.com/cyberknight777/pickle_releases/master/changelog_r.md\",
   \"date\": \"$DATE\",
   \"sha1\": \"$sha1\"
   },
@@ -295,8 +295,8 @@ mkzip() {
   \"kernel\": {
   \"name\": \"DragonHeart\",
   \"version\": \"$VERSION\",
-  \"link\": \"https://github.com/cyberknight777/cancunf_releases/releases/download/$VERSION/$zipn.zip\",
-  \"changelog_url\": \"https://raw.githubusercontent.com/cyberknight777/cancunf_releases/master/changelog.md\",
+  \"link\": \"https://github.com/cyberknight777/pickle_releases/releases/download/$VERSION/$zipn.zip\",
+  \"changelog_url\": \"https://raw.githubusercontent.com/cyberknight777/pickle_releases/master/changelog.md\",
   \"date\": \"$DATE\",
   \"sha1\": \"$sha1\"
   },
@@ -313,14 +313,14 @@ mkzip() {
 			gh release upload "${VERSION}" ../"${zipn}.zip"
 		fi
 		cd ../ || exit 1
-		rm -rf cancunf_releases || exit 1
+		rm -rf pickle_releases || exit 1
 	fi
 	if [[ ${TGI} == "1" ]]; then
 		tgs "${zipn}.zip" "*#${kver} ${KBUILD_COMPILER_STRING}*"
 		tg "
-*Build*: https://github.com/cyberknight777/cancunf\_releases/releases/download/$VERSION/$zipn.zip
-*Changelog*: https://github.com/cyberknight777/cancunf\_releases/blob/master/changelog\_${re}.md
-*OTA*: https://raw.githubusercontent.com/cyberknight777/cancunf\_releases/master/DragonHeart-${re}.json
+*Build*: https://github.com/cyberknight777/pickle\_releases/releases/download/$VERSION/$zipn.zip
+*Changelog*: https://github.com/cyberknight777/pickle\_releases/blob/master/changelog\_${re}.md
+*OTA*: https://raw.githubusercontent.com/cyberknight777/pickle\_releases/master/DragonHeart-${re}.json
 "
 	fi
 }
